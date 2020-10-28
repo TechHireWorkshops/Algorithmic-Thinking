@@ -11,6 +11,7 @@ Algorithms are a plan.  They're a set of rules whereby any input of a certain ty
 ## The one way to solve any algorithm
 <details>
 <summary>The solution</summary>
+	
 ![](https://i.imgur.com/IlweEFM.gif)
 
 There's no one way to solve every algorithm
