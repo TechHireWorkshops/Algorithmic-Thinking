@@ -1,3 +1,54 @@
+// Group the people given the group size they belong to
+
+// There are n people that are split into some unknown number of groups. Each person is labeled with a unique ID from 0 to n - 1.
+
+// You are given an integer array groupSizes, where groupSizes[i] is the size of the group that person i is in. For example, if groupSizes[1] = 3, then person 1 must be in a group of size 3.
+
+// Return a list of groups such that each person i is in a group of size groupSizes[i].
+
+// Each person should appear in exactly one group, and every person must be in a group. If there are multiple answers, return any of them. It is guaranteed that there will be at least one valid solution for the given input.
+
+// Example 1:
+// Input: groupSizes = [3,3,3,3,3,1,3]
+// Output: [[5],[0,1,2],[3,4,6]]
+// Explanation:
+// The first group is [5]. The size is 1, and groupSizes[5] = 1.
+// The second group is [0,1,2]. The size is 3, and groupSizes[0] = groupSizes[1] = groupSizes[2] = 3.
+// The third group is [3,4,6]. The size is 3, and groupSizes[3] = groupSizes[4] = groupSizes[6] = 3.
+// Other possible solutions are[[2, 1, 6], [5], [0, 4, 3]] and[[5], [0, 6, 2], [4, 3, 1]].
+
+// Example 2:
+// Input: groupSizes = [2,1,3,3,3,2]
+// Output: [[1],[0,5],[2,3,4]]
+
+const groupSizes = groupSizes => {
+  const arr = [];
+  const groups = {};
+
+  groupSizes.forEach((size, index) => {
+    if (!groups[size]) {
+      groups[size] = [index];
+    } else {
+      groups[size].push(index);
+    }
+  });
+  Object.entries(groups).forEach(set => {
+    let size = parseInt(set[0]);
+    if (set[1].length === size) {
+      arr.push(set[1]);
+    } else {
+      for (let i = 0; i < set[1].length; i += size) {
+        arr.push(set[1].slice(i, i + size));
+      }
+    }
+  });
+  return arr;
+};
+
+console.log(groupSizes([2, 2, 1, 1, 1, 1, 1, 1]));
+
+//=====================================================================
+
 //Count number of teams
 
 // There are n soldiers standing in a line. Each soldier is assigned a unique rating value.
@@ -45,54 +96,34 @@ const numTeams = rating => {
 
 console.log(numTeams([2, 3, 6, 4, 1, 5]));
 
-//======================================================================
+//super solution
 
-// Group the people given the group size they belong to
+// const numTeams = (rating) => {
+//   if(rating.length < 3) return 0;
+//   let result = 0;
 
-// There are n people that are split into some unknown number of groups. Each person is labeled with a unique ID from 0 to n - 1.
+//   let greaterThan = new Array(rating.length).fill(0);
+//   let lessThan = new Array(rating.length).fill(0);
 
-// You are given an integer array groupSizes, where groupSizes[i] is the size of the group that person i is in. For example, if groupSizes[1] = 3, then person 1 must be in a group of size 3.
+//   for(let i = 0; i < rating.length; i++) {
+//       for(let j = i + 1; j < rating.length; j++) {
+//           if(rating[j] > rating[i]) {
+//               ++greaterThan[i];
+//           } else if(rating[j] < rating[i]) {
+//               ++lessThan[i];
+//           }
+//       }
+//   }
 
-// Return a list of groups such that each person i is in a group of size groupSizes[i].
+//   for(let i = 0; i < rating.length - 2; i++) {
+//       for(let j = i + 1; j < rating.length; j++) {
+//           if(rating[j] > rating[i]) {
+//               result += greaterThan[j];
+//           } else if(rating[j] < rating[i]) {
+//               result += lessThan[j];
+//           }
+//       }
+//   }
 
-// Each person should appear in exactly one group, and every person must be in a group. If there are multiple answers, return any of them. It is guaranteed that there will be at least one valid solution for the given input.
-
-// Example 1:
-// Input: groupSizes = [3,3,3,3,3,1,3]
-// Output: [[5],[0,1,2],[3,4,6]]
-// Explanation:
-// The first group is [5]. The size is 1, and groupSizes[5] = 1.
-// The second group is [0,1,2]. The size is 3, and groupSizes[0] = groupSizes[1] = groupSizes[2] = 3.
-// The third group is [3,4,6]. The size is 3, and groupSizes[3] = groupSizes[4] = groupSizes[6] = 3.
-// Other possible solutions are[[2, 1, 6], [5], [0, 4, 3]] and[[5], [0, 6, 2], [4, 3, 1]].
-
-// Example 2:
-// Input: groupSizes = [2,1,3,3,3,2]
-// Output: [[1],[0,5],[2,3,4]]
-
-const groupSizes = groupSizes => {
-  const arr = [];
-  const groups = {};
-
-  groupSizes.forEach((size, index) => {
-    if (!groups[size]) {
-      groups[size] = [index];
-    } else {
-      groups[size].push(index);
-    }
-  });
-  console.log(Object.entries(groups));
-  Object.entries(groups).forEach(set => {
-    let size = parseInt(set[0]);
-    if (set[1].length === size) {
-      arr.push(set[1]);
-    } else {
-      for (let i = 0; i <= size; i += size) {
-        arr.push(set[1].slice(i, i + size));
-      }
-    }
-  });
-  return arr;
-};
-
-console.log(groupSizes([1, 2, 3, 3, 3, 3, 3, 2, 3]));
+//   return result;
+// };
