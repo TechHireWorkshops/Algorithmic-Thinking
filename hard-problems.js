@@ -22,9 +22,28 @@
 // Input: rating = [1,2,3,4]
 // Output: 4
 
-const soldiers = arr => {};
+const numTeams = rating => {
+  let output = 0;
+  for (let i = 0; i < rating.length - 2; i++) {
+    for (let j = i + 1; j < rating.length; j++) {
+      if (rating[j] > rating[i]) {
+        const result = rating
+          .slice(j + 1)
+          .filter(element => element > rating[j]);
+        output += result.length;
+      }
+      if (rating[j] < rating[i]) {
+        const result = rating
+          .slice(j + 1)
+          .filter(element => element < rating[j]);
+        output += result.length;
+      }
+    }
+  }
+  return output;
+};
 
-console.log(soldiers([2, 3, 6, 4, 1, 5]));
+console.log(numTeams([2, 3, 6, 4, 1, 5]));
 
 //======================================================================
 
@@ -51,23 +70,29 @@ console.log(soldiers([2, 3, 6, 4, 1, 5]));
 // Input: groupSizes = [2,1,3,3,3,2]
 // Output: [[1],[0,5],[2,3,4]]
 
-const groupSizes = arr => {};
+const groupSizes = groupSizes => {
+  const arr = [];
+  const groups = {};
+
+  groupSizes.forEach((size, index) => {
+    if (!groups[size]) {
+      groups[size] = [index];
+    } else {
+      groups[size].push(index);
+    }
+  });
+  console.log(Object.entries(groups));
+  Object.entries(groups).forEach(set => {
+    let size = parseInt(set[0]);
+    if (set[1].length === size) {
+      arr.push(set[1]);
+    } else {
+      for (let i = 0; i <= size; i += size) {
+        arr.push(set[1].slice(i, i + size));
+      }
+    }
+  });
+  return arr;
+};
 
 console.log(groupSizes([1, 2, 3, 3, 3, 3, 3, 2, 3]));
-
-//======================================================================
-// Bigger is Greater
-
-// Lexicographical order is often known as alphabetical order when dealing with strings. A string is greater than another string if it comes later in a lexicographically sorted list.
-
-// Given a word, create a new word by swapping some or all of its characters. This new word must meet two criteria:
-
-// It must be greater than the original word
-// It must be the smallest word that meets the first condition
-// For example, given the word 'abcd', the next largest word is 'abdc'.
-
-// Complete the function biggerIsGreater below to create and return the new string meeting the criteria. If it is not possible, return no answer.
-
-const biggerIsGreater = str => {};
-
-console.log(biggerIsGreater('dkhc'));

@@ -11,11 +11,38 @@
 // n: the number of socks in the pile
 // ar: the colors of each sock
 
-const pairs = (n,arr) ={
-  
-}
+const pairs = (n, arr) => {
+  //Find number of pairs in array
+  //sort array
+  //Take one sock, look for match, set aside
+  //take sock
+  //go through the rest to see if any match
+  //if we find match, set them aside
+  //return matches
+  let matches = 0;
+  arr = arr.sort((a, b) => a - b);
 
-console.log(pairs(12,[1,4,6,2,2,1,4,6,1,2,1,4]))
+  //option 1:
+  // while (arr.length > 0) {
+  //   let firstSock = arr.shift();
+  //   if (firstSock === arr[0]) {
+  //     matches++;
+  //     arr.shift();
+  //   } else {
+  //   }
+  // }
+
+  //option 2:
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      matches++;
+      i++;
+    }
+  }
+  return matches;
+};
+
+console.log(pairs(12, [2, 2, 2]));
 
 //======================================================================
 // Save the Prisoner
@@ -32,11 +59,18 @@ console.log(pairs(12,[1,4,6,2,2,1,4,6,1,2,1,4]))
 // m: an integer, the number of sweets
 // s: an integer, the chair number to begin passing out sweets from
 
-const saveThePrisoner = (n,m,s) => {
-  
-}
+const saveThePrisoner = (n, m, s) => {
+  //take number of prisoners, find how many will get the 'extra' pieces
+  //the number of extra candy, added to the starting position will give us the bad candy position
+  let extras = m % n;
+  let seat = s + extras - 1;
+  if (seat > n) {
+    seat = seat % n;
+  }
+  return seat;
+};
 
-console.log(saveThePrisoner(5,2,1))
+console.log(saveThePrisoner(5, 2, 4));
 
 //==================================================================
 
@@ -50,8 +84,31 @@ console.log(saveThePrisoner(5,2,1))
 //   n = 5, p = 3
 // If the student wants to get to page 3, they open the book to page 1, flip 1 page and they are on the correct page. If they open the book to the last page, page 5, they turn 1 page and are at the correct page.Return 1.
 
-const drawingBook = (n,p) => {
-  
-}
+const drawingBook = (n, p) => {
+  //start from one, add page turns till we find it
+  //start from n, subtract page turns till we find it
+  let turns = 0;
+  let middle = n / 2;
+  // if (p < middle) {
+  //   for (let i = 1; i < middle; i += 2) {
+  //     if (i === p || i - 1 === p) {
+  //       return turns;
+  //     }
+  //     turns++;
+  //   }
+  // } else {
+  //   for (let i = n; i > middle; i -=2) {
+  //     if (i === p || i - 1 === p) {
+  //       return turns;
+  //     }
+  //     turns++;
+  //   }
+  // }
+  if (p < middle) {
+    return Math.ceil((p - 1) / 2);
+  } else {
+    return Math.floor((n - p) / 2);
+  }
+};
 
-console.log(drawingBook(13,7))
+console.log(drawingBook(13, 7));

@@ -177,3 +177,19 @@ const orders = [
   },
 ];
 
+const repeatCust = arr => {
+arr=arr.filter(order=>order.status==='fulfilled')
+  var result = arr.reduce((object, order) => {
+    if (object[order.customer_name]) {
+      object[order.customer_name]++;
+    } else {
+      object[order.customer_name] = 1;
+    }
+    return object;
+  }, {});
+  const orderNum = Object.values(result)
+  const repeaters = orderNum.filter(number => number > 1)
+  return repeaters.length/orderNum.length*100
+};
+
+console.log(repeatCust(orders));
