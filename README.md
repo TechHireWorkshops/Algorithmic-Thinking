@@ -152,28 +152,3 @@ Arrays and objects are by far the most important data types in algorithms
 
 [Object properties and methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
-### The Problem
->A store wants to analyze their order data to figure out how many of their customers are repeat customers. Orders can have a status of fulfilled, unfulfilled, cancelled, and returned.  They only want to consider customers that have fulfilled orders. Using the provided data, calculate what percentage of their customers with fulfilled orders are repeat customers.
-
-<details>
-<summary>The Solution</summary>
-
-```  let customers = {};
-  orders.forEach(order => {
-    if (order.status === 'fulfilled') {
-      if (customers[order.customer_name]) {
-        customers[order.customer_name]++;
-      } else {
-        customers[order.customer_name] = 1;
-      }
-    }
-  });
-  let repeatCust =
-    (Object.values(customers).filter(cust => cust > 1).length /
-      Object.keys(customers).length) *
-    100;
-  return repeatCust;
-```
-
-</details>
-
