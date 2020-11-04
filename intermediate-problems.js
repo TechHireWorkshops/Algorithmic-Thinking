@@ -42,7 +42,7 @@ const pairs = (n, arr) => {
   return matches;
 };
 
-console.log(pairs(12, [2, 2, 2]));
+console.log(pairs(3, [1, 2, 2]));
 
 //======================================================================
 // Save the Prisoner
@@ -62,15 +62,19 @@ console.log(pairs(12, [2, 2, 2]));
 const saveThePrisoner = (n, m, s) => {
   //take number of prisoners, find how many will get the 'extra' pieces
   //the number of extra candy, added to the starting position will give us the bad candy position
+  let currentSeat = s;
   let extras = m % n;
-  let seat = s + extras - 1;
-  if (seat > n) {
-    seat = seat % n;
+  currentSeat = currentSeat + extras-1;
+  if (currentSeat > n) {
+      currentSeat=currentSeat%n
   }
-  return seat;
+  if (currentSeat===0){
+      currentSeat=n
+  }
+  return currentSeat;
 };
 
-console.log(saveThePrisoner(5, 2, 4));
+console.log(saveThePrisoner(4,7,4));
 
 //==================================================================
 
