@@ -2,37 +2,38 @@
 
 ![](https://media3.giphy.com/media/c4UFjRMfRRkXu/giphy.gif?cid=ecf05e477fe189765b6e09127b23898c9943b33d8179bcf1&rid=giphy.gif)
 
-##What are algorithms?
+## What are algorithms?
 Algorithms are a plan.  They're a set of rules whereby any input of a certain type produces an output meeting our conditions.
 
 - Why do we want to get good at them?
 - What do practical algorithms usually do?
 
-##The one way to solve any algorithm
+## The one way to solve any algorithm
 <details>
 <summary>The solution</summary>
+	
 ![](https://i.imgur.com/IlweEFM.gif)
 
 There's no one way to solve every algorithm
 </details>
 
-###So how do we get good at them?
-####Practice
+### So how do we get good at them?
+#### Practice
 - [HackerRank](https://www.hackerrank.com)
 - [LeetCode](https://https://leetcode.com/)
 - [Edabit](https://edabit.com/)
 
-####Use them
+#### Use them
 Creating more ambitious programs necessitates better algorithms.
 
-####Play games
+#### Play games
 - [Zachtronics](https://store.steampowered.com/developer/zachtronics)
 - [Coding Game](https://www.codingame.com/start)
 
-####Immerse yourself
+#### Immerse yourself
 There are tools, approaches, and guidelines that allow us to solve algorithms reliably and efficiently.
 
-##General approach
+## General approach
 ### Understand the problem
 Read the description and understand what is being asked of you.  Look at what the input and output data type.  Looking at examples can be helpful.
 
@@ -43,15 +44,15 @@ Make a plan.  Think of the steps you'll take to transform your input into a usea
 - Break the problem into small individual steps
 - Try filling in steps from both the input and output.
 
-###Code it
+### Code it
 Transform your pseudo code to real code. Googling here can be a vital. Check along the way with console logs and debuggers to make sure you're getting what you expect. Work through your steps and test until it works.
 
 
-###Refactor and Consider Edge Cases
+### Refactor and Consider Edge Cases
 Look to see if you can trim fat or combine steps. Consider how your code would react if supplied unusual inputs.
 
-##Our method in action
-###The problem
+## Our method in action
+### The problem
 
 > There are 3n piles of coins of varying size, you and your friends will take piles of coins as follows:
 > 
@@ -82,7 +83,7 @@ Look to see if you can trim fat or combine steps. Consider how your code would r
 > Input: piles = [9,8,7,6,5,1,2,3,4]
 > Output: 18
  
-###The solution
+### The solution
 <details>
 <summary>Version 1</summary>
 
@@ -144,14 +145,14 @@ Completes in 212 ms
 ## Understanding data manipulation
 Data manipulation is the ability to read, update, and change type of data to identify important information, sort it, and format it as needed.  Understanding the rules and tools of each data type are essential.
 
-###Our Featured Players
+### Our Featured Players
 Arrays and objects are by far the most important data types in algorithms
 
 [Array properties and methods](https://www.w3schools.com/jsref/jsref_obj_array.asp)
 
-[Object properties and methods] (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+[Object properties and methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
-###The Problem
+### The Problem
 >A store wants to analyze their order data to figure out how many of their customers are repeat customers. Orders can have a status of fulfilled, unfulfilled, cancelled, and returned.  They only want to consider customers that have fulfilled orders. Using the provided data, calculate what percentage of their customers with fulfilled orders are repeat customers.
 
 <details>
